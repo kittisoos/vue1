@@ -1,15 +1,19 @@
 <template>
   <div>
-    <v-card class="d-flex justify-space-between mb-6">
+    <v-card class="pa-3 ma-5">
+      <v-card-text>
         <v-text-field
             v-model="newHouseWork"
             label="Új házimunka"
         ></v-text-field>
+      </v-card-text>
+      <v-card-actions>
         <v-btn @click="addNewHouseWork">
           Hozzáad
         </v-btn>
+      </v-card-actions>
     </v-card>
-    <v-card>
+    <v-card class="pa-3 ma-5">
       <v-checkbox v-for="(item, index) in houseWorkList"
                   v-bind:item="item"
                   v-bind:index="index"
