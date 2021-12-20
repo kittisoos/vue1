@@ -1,31 +1,44 @@
 <template>
-  <v-card>
-    <v-checkbox
-        v-model="porszivozas"
-        :label="'Porszívózás'"
-    ></v-checkbox>
-    <v-checkbox
-        v-model="felmosas"
-        :label="'Felmosás'"
-    ></v-checkbox>
-  </v-card>
+  <div>
+    <v-card class="d-flex justify-space-between mb-6">
+        <v-text-field
+            v-model="newHouseWork"
+            label="Új házimunka"
+        ></v-text-field>
+        <v-btn @click="addNewHouseWork">
+          Hozzáad
+        </v-btn>
+    </v-card>
+    <v-card>
+      <v-checkbox v-for="(item, index) in houseWorkList"
+                  v-bind:item="item"
+                  v-bind:index="index"
+                  v-bind:key="item.id"
+                  :label="item"
+      ></v-checkbox>
+    </v-card>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      porszivozas: false,
-      felmosas: false
+      newHouseWork: '',
+      houseWorkList: []
     }
   },
+  methods: {
+    addNewHouseWork: function () {
+      if (this.newHouseWork !== '') {
+        this.houseWorkList.push(this.newHouseWork);
+        this.newHouseWork = '';
+      }
+    }
+  }
 }
 </script>
 
 <style>
-v-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 </style>
